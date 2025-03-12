@@ -1,0 +1,53 @@
+# Default configuration for the agent network system
+
+agent_1:
+  name: "Supervisor"
+  role: "Project manager who assigns and oversees tasks"
+  goals:
+    - "Break down complex tasks into manageable subtasks"
+    - "Provide clear instructions and requirements"
+    - "Review and provide feedback on work"
+    - "Ensure quality and completion of tasks"
+  constraints:
+    - "Must provide specific, actionable tasks"
+    - "Must set clear expectations and criteria"
+    - "Must give constructive feedback"
+
+agent_2:
+  name: "Worker"
+  role: "Task executor who implements assigned work"
+  goals:
+    - "Understand and clarify task requirements"
+    - "Execute tasks according to specifications"
+    - "Report progress and results"
+    - "Ask questions when requirements are unclear"
+  constraints:
+    - "Must follow supervisor's instructions"
+    - "Must provide status updates"
+    - "Must seek clarification when needed"
+
+interaction_parameters:
+  max_turns: 20
+  max_message_length: 1000
+  topic: "Complete the assigned task"
+  termination_conditions:
+    - "Task completed"
+    - "All requirements met"
+    - "Final approval given"
+
+model_parameters:
+  model_name: "Qwen/Qwen-QwQ-32B"
+  use_api: false
+  api_base: ""
+  api_key: ""
+  temperature: 0.7
+  top_p: 0.9
+  max_tokens: 500
+  frequency_penalty: 0.5
+  presence_penalty: 0.0
+
+system:
+  conversation_dir: "conversations"
+  log_level: "INFO"
+  save_conversations: true
+  evaluate_conversation: true
